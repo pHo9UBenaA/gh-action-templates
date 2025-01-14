@@ -1,0 +1,48 @@
+name: Call chrome-extension-upload-action
+
+on:
+  workflow_call:
+    inputs:
+      client-id:
+        description: "Your Google Cloud Client ID"
+        required: true
+        type: string
+      client-secret:
+        description: "Your Google Cloud Client Secret"
+        required: true
+        type: string
+      refresh-token:
+        description: "Your Google Cloud Refresh Token"
+        required: true
+        type: string
+      extension-id:
+        description: "The ID of your Chrome extension."
+        required: true
+        type: string
+      file-path:
+        description: "The path to your Chrome extension zip file."
+        required: true
+        type: string
+      publish:
+        description: "Whether to publish the extension immediately."
+        required: false
+        default: "false"
+        type: string
+
+jobs:
+  call-chrome-extension-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Upload Chrome extension
+        uses: pHo9UBenaA/chrome-extension-upload-action@master
+        with:
+          client-id: ${{ inputs.client-id }}
+          client-secret: ${{ inputs.client-secret }}
+          refresh-token: ${{ inputs.refresh-token }}
+          extension-id: ${{ inputs.extension-id }}
+          file-path: ${{ inputs.file-path }}
+          publish: ${{ inputs.publish }}
