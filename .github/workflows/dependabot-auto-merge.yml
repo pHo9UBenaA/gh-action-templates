@@ -1,5 +1,11 @@
 name: Dependabot auto-merge
-on: workflow_call
+
+on:
+  workflow_call:
+    secrets:
+      GITHUB_APP_TOKEN:
+        required: true
+        type: string
 
 jobs:
   dependabot:
@@ -10,11 +16,11 @@ jobs:
         id: "metadata"
         uses: dependabot/fetch-metadata@v2
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: ${{ secrets.GITHUB_APP_TOKEN }}
       - name: "Merge Dependabot PR"
         run: |
           gh pr review --approve "$PR_URL"
           gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_APP_TOKEN }}
