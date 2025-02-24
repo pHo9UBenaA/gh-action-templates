@@ -1,0 +1,33 @@
+name: Auto Tag on Merge
+
+on:
+  workflow_call:
+    inputs:
+      branch_pattern:
+        description: 'Branch name pattern (default is vX.Y.Z format)'
+        required: false
+        type: string
+        default: '^v[0-9]+\.[0-9]+\.[0-9]+$'
+
+jobs:
+  create-tag:
+    if: github.event.pull_request.merged == true
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create tag from branch name
+        run: |
+          BRANCH_NAME=${{ github.event.pull_request.head.ref }}
+          if [[ $BRANCH_NAME =~ ${{ inputs.branch_pattern }} ]]; then
+            echo "Creating tag from branch: $BRANCH_NAME"
+            git tag $BRANCH_NAME
+            git push origin --tags
+          else
+            echo "Branch name $BRANCH_NAME does not match version pattern, skipping tag creation"
+          fi
