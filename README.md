@@ -14,57 +14,10 @@ To use these workflows in your repository:
 ```yaml
 jobs:
   job-name:
-    uses: <owner>/<repository>/.github/workflows/<template-file-name>@<branch>
+    uses: <owner>/<repository>/.github/workflows/<template-file-name>@master
     with:
       # Specify the required inputs here
 ```
-
----
-
-## Templates and How to Call Them
-
-### **Bun CI Template**
-
-A CI workflow for projects using Bun.
-
-```yaml
-jobs:
-  bun-ci-job:
-    uses: pHo9UBenaA/gh-action-templates/.github/workflows/bun-ci.yml@main
-```
-
----
-
-### **Chrome Extension Upload Template**
-
-A workflow to automatically upload a Chrome extension.
-
-```yaml
-jobs:
-  upload-chrome-extension:
-    uses: pHo9UBenaA/gh-action-templates/.github/workflows/chrome-extension-upload.yml@main
-    with:
-      client-id: ${{ secrets.CHROME_CLIENT_ID }}
-      client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
-      refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
-      extension-id: "your-extension-id"
-      file-path: "./path/to/extension.zip"
-      publish: "true" # Set to "false" if you don't want to publish immediately
-```
-
----
-
-### **Deno CI Template**
-
-A CI workflow for projects using Deno.
-
-```yaml
-jobs:
-  deno-ci-job:
-    uses: pHo9UBenaA/gh-action-templates/.github/workflows/deno-ci.yml@main
-```
-
----
 
 ## Prerequisites
 
