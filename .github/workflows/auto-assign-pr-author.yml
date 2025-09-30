@@ -1,0 +1,25 @@
+name: Auto Assign PR Author
+
+on:
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+      - reopened
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  auto-assign:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'renovate[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      # github.event.pull_request.assignees == null || length(github.event.pull_request.assignees) == 0
+      - if: toJSON(github.event.pull_request.assignees) == '[]'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr --repo ${{ github.repository }} edit ${{ github.event.pull_request.number }} --add-assignee "${{ github.event.pull_request.user.login }}"
