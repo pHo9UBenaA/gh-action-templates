@@ -20,6 +20,6 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
-      - run: pnpm i --frozen-lockfile --no-optional=false
+      - run: pnpm i --frozen-lockfile
       - run: pnpm run ci --reporter=github
       - run: pnpm run test
