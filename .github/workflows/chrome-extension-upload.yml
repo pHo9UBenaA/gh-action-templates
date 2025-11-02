@@ -31,7 +31,7 @@ on:
 
 jobs:
   call-chrome-extension-upload:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Checkout code
