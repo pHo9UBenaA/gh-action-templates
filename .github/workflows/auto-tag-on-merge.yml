@@ -13,7 +13,7 @@ jobs:
   create-tag:
     if: github.event.pull_request.merged == true
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     
     steps:
       - name: Checkout repository
