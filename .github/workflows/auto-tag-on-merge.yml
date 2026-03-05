@@ -22,11 +22,13 @@ jobs:
           fetch-depth: 0
 
       - name: Create tag from branch name
+        env:
+          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+          BRANCH_PATTERN: ${{ inputs.branch_pattern }}
         run: |
-          BRANCH_NAME=${{ github.event.pull_request.head.ref }}
-          if [[ $BRANCH_NAME =~ ${{ inputs.branch_pattern }} ]]; then
+          if [[ "$BRANCH_NAME" =~ $BRANCH_PATTERN ]]; then
             echo "Creating tag from branch: $BRANCH_NAME"
-            git tag $BRANCH_NAME
+            git tag "$BRANCH_NAME"
             git push origin --tags
           else
             echo "Branch name $BRANCH_NAME does not match version pattern, skipping tag creation"
