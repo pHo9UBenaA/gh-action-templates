@@ -39,12 +39,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
 
       - name: Upload Chrome extension
-        uses: pHo9UBenaA/chrome-extension-upload-action@master
+        uses: pHo9UBenaA/chrome-extension-upload-action@843ab237902432dcffe66fe29f0c21fb643a1b8f # master
         with:
           client-id: ${{ inputs.client-id }}
           client-secret: ${{ inputs.client-secret }}
