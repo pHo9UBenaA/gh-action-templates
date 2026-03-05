@@ -27,11 +27,10 @@ on:
         description: "Your Google Cloud Refresh Token"
         required: true
 
-permissions:
-  contents: read
-
 jobs:
   call-chrome-extension-upload:
+    permissions:
+      contents: read # needed for actions/checkout
     runs-on: ubuntu-slim
     timeout-minutes: 10
 

@@ -7,12 +7,11 @@ on:
       - ready_for_review
       - reopened
 
-permissions:
-  contents: read
-  pull-requests: write
-
 jobs:
   auto-assign:
+    permissions:
+      contents: read
+      pull-requests: write # needed for gh pr edit --add-assignee
     if: github.actor != 'dependabot[bot]' && github.actor != 'renovate[bot]'
     runs-on: ubuntu-slim
     timeout-minutes: 2

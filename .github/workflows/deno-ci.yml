@@ -1,11 +1,10 @@
 name: Deno CI
 on: workflow_call
 
-permissions:
-  contents: read
-
 jobs:
   deno-ci:
+    permissions:
+      contents: read # needed for actions/checkout
     runs-on: ubuntu-slim
     timeout-minutes: 10
 
