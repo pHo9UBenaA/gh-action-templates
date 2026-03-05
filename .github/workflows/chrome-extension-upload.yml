@@ -40,6 +40,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Upload Chrome extension
         uses: pHo9UBenaA/chrome-extension-upload-action@master
