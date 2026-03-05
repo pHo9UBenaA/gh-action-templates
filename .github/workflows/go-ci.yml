@@ -1,6 +1,8 @@
 name: CI
 on: workflow_call
 
+permissions: {}
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

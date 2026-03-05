@@ -27,6 +27,8 @@ on:
         description: "Your Google Cloud Refresh Token"
         required: true
 
+permissions: {}
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
