@@ -11,6 +11,7 @@ on:
 
 jobs:
   create-tag:
+    name: Create Tag from Branch
     permissions:
       contents: write # needed for git tag + git push
     if: github.event.pull_request.merged == true

@@ -3,6 +3,7 @@ on: workflow_call
 
 jobs:
   bun-ci:
+    name: Bun CI
     permissions:
       contents: read # needed for actions/checkout
     runs-on: ubuntu-slim

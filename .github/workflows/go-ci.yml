@@ -3,6 +3,7 @@ on: workflow_call
 
 jobs:
   go-ci:
+    name: Go CI
     permissions:
       contents: read # needed for actions/checkout
     runs-on: ubuntu-slim

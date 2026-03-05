@@ -3,6 +3,7 @@ on: workflow_call
 
 jobs:
   pnpm-biome-ci:
+    name: PNPM Biome CI
     permissions:
       contents: read # needed for actions/checkout
     runs-on: ubuntu-slim

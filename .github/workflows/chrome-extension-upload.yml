@@ -29,6 +29,7 @@ on:
 
 jobs:
   call-chrome-extension-upload:
+    name: Upload Chrome Extension
     permissions:
       contents: read # needed for actions/checkout
     runs-on: ubuntu-slim
