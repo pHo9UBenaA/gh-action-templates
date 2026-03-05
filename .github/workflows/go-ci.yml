@@ -7,6 +7,7 @@ permissions:
 jobs:
   go-ci:
     runs-on: ubuntu-slim
+    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@v5
