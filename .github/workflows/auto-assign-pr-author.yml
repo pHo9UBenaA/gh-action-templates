@@ -21,5 +21,8 @@ jobs:
       - if: toJSON(github.event.pull_request.assignees) == '[]'
         env:
           GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
         run: |
-          gh pr --repo ${{ github.repository }} edit ${{ github.event.pull_request.number }} --add-assignee "${{ github.event.pull_request.user.login }}"
+          gh pr --repo "$REPO" edit "$PR_NUMBER" --add-assignee "$PR_AUTHOR"
