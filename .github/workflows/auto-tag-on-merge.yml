@@ -24,15 +24,19 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Create tag from branch name
         env:
           BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
           BRANCH_PATTERN: ${{ inputs.branch_pattern }}
+          GITHUB_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
         run: |
           if [[ "$BRANCH_NAME" =~ $BRANCH_PATTERN ]]; then
             echo "Creating tag from branch: $BRANCH_NAME"
             git tag "$BRANCH_NAME"
+            git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git"
             git push origin --tags
           else
             echo "Branch name $BRANCH_NAME does not match version pattern, skipping tag creation"
