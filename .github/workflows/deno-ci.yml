@@ -1,6 +1,9 @@
 name: Deno CI
 on: workflow_call
 
+permissions:
+  contents: read
+
 jobs:
   deno-ci:
     runs-on: ubuntu-slim

@@ -1,6 +1,9 @@
 name: Bun CI
 on: workflow_call
 
+permissions:
+  contents: read
+
 jobs:
   bun-ci:
     runs-on: ubuntu-slim

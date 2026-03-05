@@ -29,6 +29,9 @@ on:
         default: "false"
         type: string
 
+permissions:
+  contents: read
+
 jobs:
   call-chrome-extension-upload:
     runs-on: ubuntu-slim

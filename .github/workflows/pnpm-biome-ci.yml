@@ -1,6 +1,9 @@
 name: PNPM Biome CI
 on: workflow_call
 
+permissions:
+  contents: read
+
 jobs:
   pnpm-biome-ci:
     runs-on: ubuntu-slim
