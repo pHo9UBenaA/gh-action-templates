@@ -9,6 +9,10 @@ on:
         type: string
         default: '^v[0-9]+\.[0-9]+\.[0-9]+$'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   create-tag:
     name: Create Tag from Branch

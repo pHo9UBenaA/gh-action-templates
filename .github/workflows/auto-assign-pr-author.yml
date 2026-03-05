@@ -7,6 +7,10 @@ on:
       - ready_for_review
       - reopened
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   auto-assign:
     name: Auto Assign PR Author
