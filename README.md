@@ -14,7 +14,7 @@ To use these workflows in your repository:
 ```yaml
 jobs:
   job-name:
-    uses: <owner>/<repository>/.github/workflows/<template-file-name>@master
+    uses: <owner>/<repository>/.github/workflows/<template-file-name>@19edb5410545784a60afe55689770f09407c704f # master
     with:
       # Specify the required inputs here
 ```
