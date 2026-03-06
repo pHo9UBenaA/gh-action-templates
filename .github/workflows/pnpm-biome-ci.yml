@@ -3,10 +3,6 @@ on: workflow_call
 
 permissions: {}
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   pnpm-biome-ci:
     name: PNPM Biome CI

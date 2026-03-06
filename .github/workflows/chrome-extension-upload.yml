@@ -29,10 +29,6 @@ on:
 
 permissions: {}
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   call-chrome-extension-upload:
     name: Upload Chrome Extension
